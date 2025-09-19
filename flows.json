@@ -1,0 +1,1224 @@
+[
+    {
+        "id": "1fc1cb4f47e28556",
+        "type": "tab",
+        "label": "Intraclase Sensor",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6f517fd696b9186e",
+        "type": "tab",
+        "label": "Prueba Dashboard",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "dfac341a36b65f45",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": true
+    },
+    {
+        "id": "912a09561787a7f8",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#303030",
+            "primary": "#ffae00",
+            "bgPage": "#e6e6e6",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "1cda14fde7db8ec2",
+        "type": "ui-page",
+        "name": "Prueba1 de Dashboard",
+        "ui": "dfac341a36b65f45",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "912a09561787a7f8",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "b3fc2301440cb6aa",
+        "type": "ui-group",
+        "name": "Grupo 1",
+        "page": "1cda14fde7db8ec2",
+        "width": "3",
+        "height": "3",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "da80190598313628",
+        "type": "ui-group",
+        "name": "Grupo 2",
+        "page": "1cda14fde7db8ec2",
+        "width": "3",
+        "height": "3",
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "2e8bc773196d087d",
+        "type": "ui-group",
+        "name": "Grupo 3",
+        "page": "1cda14fde7db8ec2",
+        "width": "3",
+        "height": "3",
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "aeed6658f4060ba3",
+        "type": "ui-group",
+        "name": "Grupo 4",
+        "page": "1cda14fde7db8ec2",
+        "width": "3",
+        "height": "6",
+        "order": 4,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "b7321a02867922d5",
+        "type": "random",
+        "z": "1fc1cb4f47e28556",
+        "name": "Sensor",
+        "low": 1,
+        "high": 10,
+        "inte": "false",
+        "property": "payload",
+        "x": 360,
+        "y": 180,
+        "wires": [
+            [
+                "98b2f029eebe0677",
+                "22da57b069787134"
+            ]
+        ]
+    },
+    {
+        "id": "79aecadc2e83917f",
+        "type": "inject",
+        "z": "1fc1cb4f47e28556",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "num",
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "b7321a02867922d5"
+            ]
+        ]
+    },
+    {
+        "id": "98b2f029eebe0677",
+        "type": "function",
+        "z": "1fc1cb4f47e28556",
+        "name": "F-Temperatura",
+        "func": "msg.payload = (msg.payload * 10);\n\nif (msg.payload > 50) {\n    msg.payload = msg.payload + \" Alarma mayor a 50\";\n} else {\n    msg;\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 180,
+        "wires": [
+            [
+                "1d6b180f57fa7b82"
+            ]
+        ]
+    },
+    {
+        "id": "1d6b180f57fa7b82",
+        "type": "debug",
+        "z": "1fc1cb4f47e28556",
+        "name": "Salida Temperatura",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "22da57b069787134",
+        "type": "function",
+        "z": "1fc1cb4f47e28556",
+        "name": "F-Humedad",
+        "func": "msg.payload = ((msg.payload * 3) + 2.5);\n\nif (msg.payload > 90) {\n    msg.payload = msg.payload + \" Alarma mayor a 90\";\n} else {\n    msg;\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 240,
+        "wires": [
+            [
+                "466a5bbfcf83c1c8"
+            ]
+        ]
+    },
+    {
+        "id": "466a5bbfcf83c1c8",
+        "type": "debug",
+        "z": "1fc1cb4f47e28556",
+        "name": "Salida Humedad",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "a2ee1d74183cb4a3",
+        "type": "inject",
+        "z": "1fc1cb4f47e28556",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "num",
+        "x": 190,
+        "y": 480,
+        "wires": [
+            [
+                "31f3ca052493855d"
+            ]
+        ]
+    },
+    {
+        "id": "31f3ca052493855d",
+        "type": "random",
+        "z": "1fc1cb4f47e28556",
+        "name": "Sensor",
+        "low": 1,
+        "high": 10,
+        "inte": "false",
+        "property": "payload",
+        "x": 360,
+        "y": 480,
+        "wires": [
+            [
+                "c426185498771a6f",
+                "90204133d9310c1e"
+            ]
+        ]
+    },
+    {
+        "id": "b5154e8431767cd7",
+        "type": "switch",
+        "z": "1fc1cb4f47e28556",
+        "name": "T>50",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "50",
+                "vt": "str"
+            },
+            {
+                "t": "lte",
+                "v": "50",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 790,
+        "y": 420,
+        "wires": [
+            [
+                "328a167d458a91d5"
+            ],
+            [
+                "a07f302be720cc4b"
+            ]
+        ]
+    },
+    {
+        "id": "c5a37debab1fd1a6",
+        "type": "switch",
+        "z": "1fc1cb4f47e28556",
+        "name": "H>90",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "90",
+                "vt": "str"
+            },
+            {
+                "t": "lte",
+                "v": "90",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 790,
+        "y": 560,
+        "wires": [
+            [
+                "ca643a91dc183c18"
+            ],
+            [
+                "8ae4d4c4399e583f"
+            ]
+        ]
+    },
+    {
+        "id": "a07f302be720cc4b",
+        "type": "debug",
+        "z": "1fc1cb4f47e28556",
+        "name": "Salida Temperatura",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "8ae4d4c4399e583f",
+        "type": "debug",
+        "z": "1fc1cb4f47e28556",
+        "name": "Salida Humedad",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "c426185498771a6f",
+        "type": "change",
+        "z": "1fc1cb4f47e28556",
+        "name": "Temperatura",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$round((payload * 10), 2)\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 610,
+        "y": 420,
+        "wires": [
+            [
+                "b5154e8431767cd7"
+            ]
+        ]
+    },
+    {
+        "id": "90204133d9310c1e",
+        "type": "change",
+        "z": "1fc1cb4f47e28556",
+        "name": "Humedad",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$round(((payload * 3) + 2.5), 2)\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 560,
+        "wires": [
+            [
+                "c5a37debab1fd1a6"
+            ]
+        ]
+    },
+    {
+        "id": "328a167d458a91d5",
+        "type": "change",
+        "z": "1fc1cb4f47e28556",
+        "name": "Alarma Temperatura",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload & \" \" & \"Alarma es Mayor a 50\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 360,
+        "wires": [
+            [
+                "a07f302be720cc4b"
+            ]
+        ]
+    },
+    {
+        "id": "ca643a91dc183c18",
+        "type": "change",
+        "z": "1fc1cb4f47e28556",
+        "name": "Alarma Humedad",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload & \" \" & \"Alarma es Mayor a 90\"",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 990,
+        "y": 500,
+        "wires": [
+            [
+                "8ae4d4c4399e583f"
+            ]
+        ]
+    },
+    {
+        "id": "3d6fae4441e149b3",
+        "type": "ui-led",
+        "z": "1fc1cb4f47e28556",
+        "name": "",
+        "group": "2e8bc773196d087d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "states": [
+            {
+                "value": "false",
+                "valueType": "bool",
+                "color": "#ff0000"
+            },
+            {
+                "value": "true",
+                "valueType": "bool",
+                "color": "#00ff00"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showBorder": true,
+        "showGlow": true,
+        "x": 1270,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "474096822291394e",
+        "type": "inject",
+        "z": "1fc1cb4f47e28556",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 1070,
+        "y": 840,
+        "wires": [
+            [
+                "3d6fae4441e149b3"
+            ]
+        ]
+    },
+    {
+        "id": "fbc0239ed5c03272",
+        "type": "inject",
+        "z": "1fc1cb4f47e28556",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 990,
+        "y": 940,
+        "wires": [
+            [
+                "3d6fae4441e149b3"
+            ]
+        ]
+    },
+    {
+        "id": "281c6c1ec63cef6a",
+        "type": "inject",
+        "z": "6f517fd696b9186e",
+        "name": "Hola",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "386b810d26ca596f"
+            ]
+        ]
+    },
+    {
+        "id": "0815a9ee9223f7f9",
+        "type": "ui-gauge",
+        "z": "6f517fd696b9186e",
+        "name": "Prueba temperatura",
+        "group": "b3fc2301440cb6aa",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "3",
+        "height": "5",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Temperatura",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "Ok",
+                "textType": "str"
+            },
+            {
+                "from": "27",
+                "color": "#ffc800",
+                "text": "Fiebre",
+                "textType": "str"
+            },
+            {
+                "from": "40",
+                "color": "#ea5353",
+                "text": "F",
+                "textType": "str"
+            }
+        ],
+        "min": "0",
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 780,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "386b810d26ca596f",
+        "type": "random",
+        "z": "6f517fd696b9186e",
+        "name": "",
+        "low": 1,
+        "high": "100",
+        "inte": "true",
+        "property": "payload",
+        "x": 540,
+        "y": 120,
+        "wires": [
+            [
+                "0815a9ee9223f7f9",
+                "ed629f92bcf94207",
+                "fb2aba88cd25cc0a",
+                "367bd4dd9dbfb441",
+                "5940d705ab59a141"
+            ]
+        ]
+    },
+    {
+        "id": "a4d125635af0ffec",
+        "type": "ui-button",
+        "z": "6f517fd696b9186e",
+        "group": "aeed6658f4060ba3",
+        "name": "",
+        "label": "button",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 390,
+        "y": 420,
+        "wires": [
+            [
+                "5940d705ab59a141"
+            ]
+        ]
+    },
+    {
+        "id": "a7464a9cc5a4519e",
+        "type": "ui-switch",
+        "z": "6f517fd696b9186e",
+        "name": "",
+        "label": "switch",
+        "group": "aeed6658f4060ba3",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": false,
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "className": "",
+        "layout": "row-spread",
+        "clickableArea": "switch",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 390,
+        "y": 460,
+        "wires": [
+            [
+                "5940d705ab59a141"
+            ]
+        ]
+    },
+    {
+        "id": "cf73892309b21279",
+        "type": "ui-slider",
+        "z": "6f517fd696b9186e",
+        "group": "aeed6658f4060ba3",
+        "name": "",
+        "label": "slider",
+        "tooltip": "",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "thumbLabel": "true",
+        "showTicks": "always",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "className": "",
+        "iconPrepend": "",
+        "iconAppend": "",
+        "color": "",
+        "colorTrack": "",
+        "colorThumb": "",
+        "showTextField": false,
+        "x": 390,
+        "y": 500,
+        "wires": [
+            [
+                "ed629f92bcf94207"
+            ]
+        ]
+    },
+    {
+        "id": "d365914eb6396860",
+        "type": "ui-number-input",
+        "z": "6f517fd696b9186e",
+        "group": "aeed6658f4060ba3",
+        "name": "",
+        "label": "number",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "tooltip": "",
+        "passthru": true,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "spinner": "default",
+        "x": 400,
+        "y": 620,
+        "wires": [
+            [
+                "7fcf7ce108fac69a"
+            ]
+        ]
+    },
+    {
+        "id": "41dc264364411041",
+        "type": "ui-text-input",
+        "z": "6f517fd696b9186e",
+        "group": "aeed6658f4060ba3",
+        "name": "",
+        "label": "text",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "text",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 410,
+        "y": 700,
+        "wires": [
+            [
+                "7fcf7ce108fac69a"
+            ]
+        ]
+    },
+    {
+        "id": "5940d705ab59a141",
+        "type": "ui-chart",
+        "z": "6f517fd696b9186e",
+        "group": "aeed6658f4060ba3",
+        "name": "",
+        "label": "chart",
+        "order": 7,
+        "chartType": "histogram",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "bins",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 8,
+        "className": "",
+        "interpolation": "linear",
+        "x": 710,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7fcf7ce108fac69a",
+        "type": "ui-notification",
+        "z": "6f517fd696b9186e",
+        "ui": "",
+        "position": "top right",
+        "colorDefault": true,
+        "color": "#000000",
+        "displayTime": "3",
+        "showCountdown": true,
+        "outputs": 1,
+        "allowDismiss": true,
+        "dismissText": "Close",
+        "allowConfirm": false,
+        "confirmText": "Confirm",
+        "raw": false,
+        "className": "",
+        "name": "",
+        "x": 630,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ed629f92bcf94207",
+        "type": "ui-chart",
+        "z": "6f517fd696b9186e",
+        "group": "da80190598313628",
+        "name": "",
+        "label": "chart",
+        "order": 1,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "3",
+        "height": "5",
+        "className": "",
+        "interpolation": "linear",
+        "x": 730,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fb2aba88cd25cc0a",
+        "type": "ui-notification",
+        "z": "6f517fd696b9186e",
+        "ui": "",
+        "position": "top right",
+        "colorDefault": true,
+        "color": null,
+        "displayTime": "3",
+        "showCountdown": true,
+        "outputs": 1,
+        "allowDismiss": true,
+        "dismissText": "Close",
+        "allowConfirm": false,
+        "confirmText": "Confirm",
+        "raw": false,
+        "className": "",
+        "name": "",
+        "x": 750,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9d1fa9fb951d4fb7",
+        "type": "ui-form",
+        "z": "6f517fd696b9186e",
+        "name": "Date",
+        "group": "aeed6658f4060ba3",
+        "label": "",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "",
+                "key": "2",
+                "type": "date",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "2": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "clear",
+        "resetOnSubmit": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "passthru": false,
+        "dropdownOptions": [],
+        "x": 750,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "367bd4dd9dbfb441",
+        "type": "ui-gauge",
+        "z": "6f517fd696b9186e",
+        "name": "Gauge 2",
+        "group": "2e8bc773196d087d",
+        "order": 3,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "3",
+        "height": "5",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Gauge",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "Ok",
+                "textType": "str"
+            },
+            {
+                "from": "27",
+                "color": "#ffc800",
+                "text": "Fiebre",
+                "textType": "str"
+            },
+            {
+                "from": "40",
+                "color": "#ea5353",
+                "text": "F",
+                "textType": "str"
+            }
+        ],
+        "min": "0",
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 740,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dbe9029ee6de93e5",
+        "type": "ui-switch",
+        "z": "6f517fd696b9186e",
+        "name": "",
+        "label": "switch",
+        "group": "b3fc2301440cb6aa",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": false,
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "className": "",
+        "layout": "row-spread",
+        "clickableArea": "switch",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "0815a9ee9223f7f9"
+            ]
+        ]
+    },
+    {
+        "id": "8205a08d55f0f95f",
+        "type": "ui-text-input",
+        "z": "6f517fd696b9186e",
+        "group": "2e8bc773196d087d",
+        "name": "",
+        "label": "text",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "number",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 370,
+        "y": 260,
+        "wires": [
+            [
+                "367bd4dd9dbfb441"
+            ]
+        ]
+    }
+]
