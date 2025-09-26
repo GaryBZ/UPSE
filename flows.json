@@ -1353,8 +1353,12 @@
         "id": "1956138d044149a9",
         "type": "inject",
         "z": "b3fea16a37144299",
-        "name": "Pulsor",
+        "name": "Sensor Calor",
         "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
             {
                 "p": "payload"
             }
@@ -1363,10 +1367,10 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "topic": "",
-        "payload": "{\"msg\":\"Hola xd\"}",
+        "topic": "Utmach/pruebaYo/calor",
+        "payload": "{\"texto\":\"Dispositivo A\",\"temperatura\":21}",
         "payloadType": "json",
-        "x": 630,
+        "x": 650,
         "y": 520,
         "wires": [
             [
@@ -1379,7 +1383,7 @@
         "type": "mqtt out",
         "z": "b3fea16a37144299",
         "name": "Salida Local",
-        "topic": "Utmach/prueba/Yo",
+        "topic": "",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -1391,5 +1395,63 @@
         "x": 910,
         "y": 520,
         "wires": []
+    },
+    {
+        "id": "57cd3af2d5c738f3",
+        "type": "inject",
+        "z": "b3fea16a37144299",
+        "name": "Sensor Agua",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Utmach/pruebaYo/agua",
+        "payload": "{\"texto\":\"Dispositivo B\",\"temperatura\":15}",
+        "payloadType": "json",
+        "x": 650,
+        "y": 580,
+        "wires": [
+            [
+                "b90dbda5de76dbc1"
+            ]
+        ]
+    },
+    {
+        "id": "a7bca58924b9b0d7",
+        "type": "inject",
+        "z": "b3fea16a37144299",
+        "name": "Sensor Humedad",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Utmach/pruebaYo/humedad",
+        "payload": "{\"texto\":\"Dispositivo C\",\"temperatura\":35}",
+        "payloadType": "json",
+        "x": 660,
+        "y": 640,
+        "wires": [
+            [
+                "b90dbda5de76dbc1"
+            ]
+        ]
     }
 ]
