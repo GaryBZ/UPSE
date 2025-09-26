@@ -16,6 +16,14 @@
         "env": []
     },
     {
+        "id": "b3fea16a37144299",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "dfac341a36b65f45",
         "type": "ui-base",
         "name": "My Dashboard",
@@ -145,6 +153,68 @@
         "visible": "true",
         "disabled": "false",
         "groupType": "default"
+    },
+    {
+        "id": "59df182f8299c94c",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d8b7db84e89dd61f",
+        "type": "mqtt-broker",
+        "name": "Hivemq",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
     },
     {
         "id": "b7321a02867922d5",
@@ -710,7 +780,6 @@
             [
                 "0815a9ee9223f7f9",
                 "ed629f92bcf94207",
-                "fb2aba88cd25cc0a",
                 "367bd4dd9dbfb441",
                 "5940d705ab59a141"
             ]
@@ -852,9 +921,7 @@
         "x": 400,
         "y": 620,
         "wires": [
-            [
-                "7fcf7ce108fac69a"
-            ]
+            []
         ]
     },
     {
@@ -885,9 +952,7 @@
         "x": 410,
         "y": 700,
         "wires": [
-            [
-                "7fcf7ce108fac69a"
-            ]
+            []
         ]
     },
     {
@@ -953,30 +1018,6 @@
         ]
     },
     {
-        "id": "7fcf7ce108fac69a",
-        "type": "ui-notification",
-        "z": "6f517fd696b9186e",
-        "ui": "",
-        "position": "top right",
-        "colorDefault": true,
-        "color": "#000000",
-        "displayTime": "3",
-        "showCountdown": true,
-        "outputs": 1,
-        "allowDismiss": true,
-        "dismissText": "Close",
-        "allowConfirm": false,
-        "confirmText": "Confirm",
-        "raw": false,
-        "className": "",
-        "name": "",
-        "x": 630,
-        "y": 640,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "ed629f92bcf94207",
         "type": "ui-chart",
         "z": "6f517fd696b9186e",
@@ -1034,30 +1075,6 @@
         "interpolation": "linear",
         "x": 730,
         "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "fb2aba88cd25cc0a",
-        "type": "ui-notification",
-        "z": "6f517fd696b9186e",
-        "ui": "",
-        "position": "top right",
-        "colorDefault": true,
-        "color": null,
-        "displayTime": "3",
-        "showCountdown": true,
-        "outputs": 1,
-        "allowDismiss": true,
-        "dismissText": "Close",
-        "allowConfirm": false,
-        "confirmText": "Confirm",
-        "raw": false,
-        "className": "",
-        "name": "",
-        "x": 750,
-        "y": 120,
         "wires": [
             []
         ]
@@ -1220,5 +1237,81 @@
                 "367bd4dd9dbfb441"
             ]
         ]
+    },
+    {
+        "id": "a910351375f27a08",
+        "type": "mqtt in",
+        "z": "b3fea16a37144299",
+        "name": "Mosquito",
+        "topic": "Utmach/prueba/Yo",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "59df182f8299c94c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 620,
+        "y": 380,
+        "wires": [
+            [
+                "63ae913bee7f2104"
+            ]
+        ]
+    },
+    {
+        "id": "63ae913bee7f2104",
+        "type": "debug",
+        "z": "b3fea16a37144299",
+        "name": "Registro de mensajes Mosquito",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "cb3be538c940a809",
+        "type": "mqtt in",
+        "z": "b3fea16a37144299",
+        "name": "Hivemq",
+        "topic": "Utmach/prueba/Yo/Hive",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "d8b7db84e89dd61f",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 610,
+        "y": 260,
+        "wires": [
+            [
+                "a1b81563adbb7d84"
+            ]
+        ]
+    },
+    {
+        "id": "a1b81563adbb7d84",
+        "type": "debug",
+        "z": "b3fea16a37144299",
+        "name": "Registro de mensajes Mosquito",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 260,
+        "wires": []
     }
 ]
