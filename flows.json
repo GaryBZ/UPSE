@@ -1348,5 +1348,48 @@
                 "a1b81563adbb7d84"
             ]
         ]
+    },
+    {
+        "id": "1956138d044149a9",
+        "type": "inject",
+        "z": "b3fea16a37144299",
+        "name": "Pulsor",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"msg\":\"Hola xd\"}",
+        "payloadType": "json",
+        "x": 630,
+        "y": 520,
+        "wires": [
+            [
+                "b90dbda5de76dbc1"
+            ]
+        ]
+    },
+    {
+        "id": "b90dbda5de76dbc1",
+        "type": "mqtt out",
+        "z": "b3fea16a37144299",
+        "name": "Salida Local",
+        "topic": "Utmach/prueba/Yo",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c3a9402802d2bee6",
+        "x": 910,
+        "y": 520,
+        "wires": []
     }
 ]
