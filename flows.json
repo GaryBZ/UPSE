@@ -18,7 +18,7 @@
     {
         "id": "b3fea16a37144299",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "MQTT",
         "disabled": false,
         "info": "",
         "env": []
@@ -190,6 +190,37 @@
         "type": "mqtt-broker",
         "name": "Hivemq",
         "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "c3a9402802d2bee6",
+        "type": "mqtt-broker",
+        "name": "Mosquito Local",
+        "broker": "127.0.0.1",
         "port": 1883,
         "clientid": "",
         "autoConnect": true,
@@ -1252,29 +1283,12 @@
         "rh": 0,
         "inputs": 0,
         "x": 620,
-        "y": 380,
+        "y": 320,
         "wires": [
             [
-                "63ae913bee7f2104"
+                "a1b81563adbb7d84"
             ]
         ]
-    },
-    {
-        "id": "63ae913bee7f2104",
-        "type": "debug",
-        "z": "b3fea16a37144299",
-        "name": "Registro de mensajes Mosquito",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 970,
-        "y": 380,
-        "wires": []
     },
     {
         "id": "cb3be538c940a809",
@@ -1289,8 +1303,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 610,
-        "y": 260,
+        "x": 630,
+        "y": 380,
         "wires": [
             [
                 "a1b81563adbb7d84"
@@ -1301,7 +1315,7 @@
         "id": "a1b81563adbb7d84",
         "type": "debug",
         "z": "b3fea16a37144299",
-        "name": "Registro de mensajes Mosquito",
+        "name": "Registro de mensajes",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -1310,8 +1324,29 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
-        "y": 260,
+        "x": 940,
+        "y": 320,
         "wires": []
+    },
+    {
+        "id": "99696110a9f054a6",
+        "type": "mqtt in",
+        "z": "b3fea16a37144299",
+        "name": "Mosquito Local",
+        "topic": "Utmach/prueba/Yo",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c3a9402802d2bee6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 610,
+        "y": 260,
+        "wires": [
+            [
+                "a1b81563adbb7d84"
+            ]
+        ]
     }
 ]
